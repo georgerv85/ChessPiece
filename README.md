@@ -6,7 +6,7 @@
 </p>
 ## Overview
 This project demonstrates object-oriented programming concepts in Java through the modeling of a chess board, chess pieces, and their movement rules.  
-It includes a back-end logic layer implemented in Java (ChessPiece, ChessRook, ChessBishop, ChessBoard) and an optional front-end built in React for visualizing the board and interacting with pieces.
+It includes a back-end logic layer implemented in Java (ChessPiece, ChessRook, ChessBishop, ChessBoard).
 
 ---
 
