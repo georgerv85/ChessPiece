@@ -4,3 +4,17 @@
 <p align="center">
  <img src="./Chess_pieces.png">
 </p>
+## Overview
+This project demonstrates object-oriented programming concepts in Java through the modeling of a chess board, chess pieces, and their movement rules.  
+It includes a back-end logic layer implemented in Java (ChessPiece, ChessRook, ChessBishop, ChessBoard) and an optional front-end built in React for visualizing the board and interacting with pieces.
+
+---
+
+## Features
+### Java Back-End (Core Logic)
+- Superclass **ChessPiece** defining common fields (color, row, column)
+- Subclasses **ChessRook** and **ChessBishop**, each overriding `validDestination()`
+- **ChessBoard**: 2D array `ChessPiece[][]` representing an 8×8 chess board
+- Method `theseis()` initializes pieces in standard positions
+- `printBoard()` prints board state to terminal
+- `getPiece(row, col)` retrieves a piece at a given coordinate
