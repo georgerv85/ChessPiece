@@ -1,18 +1,20 @@
-## Getting Started
+<span style="color:red;">
+  <h2 align="center">ChessPiece Project Using Java</h2>
+</span>
+<p align="center">
+ <img src="./Chess_pieces.png">
+</p>
+## Overview
+This project demonstrates object-oriented programming concepts in Java through the modeling of a chess board, chess pieces, and their movement rules.  
+It includes a back-end logic layer implemented in Java (ChessPiece, ChessRook, ChessBishop, ChessBoard).
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+---
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Features
+### Java Back-End (Core Logic)
+- Superclass **ChessPiece** defining common fields (color, row, column)
+- Subclasses **ChessRook** and **ChessBishop**, each overriding `validDestination()`
+- **ChessBoard**: 2D array `ChessPiece[][]` representing an 8×8 chess board
+- Method `theseis()` initializes pieces in standard positions
+- `printBoard()` prints board state to terminal
+- `getPiece(row, col)` retrieves a piece at a given coordinate
