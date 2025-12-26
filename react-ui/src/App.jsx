@@ -27,6 +27,13 @@ function initialBoard() {
   return b;
 }
 
+const PIECE_ICONS = {
+  wR: "♖",
+  bR: "♜",
+  wB: "♗",
+  bB: "♝",
+};
+
 function App() {
   // state της σκακιέρας
   const [board] = useState(initialBoard());
@@ -66,7 +73,7 @@ function App() {
                 className={`square ${isDark ? "dark" : "light"}`}
                 onClick={() => handleSquareClick(r, c)}
               >
-                {cell}
+                {cell ? PIECE_ICONS[cell] : ""}
               </div>
             );
           })

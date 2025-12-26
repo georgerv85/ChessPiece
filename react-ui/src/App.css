@@ -23,7 +23,8 @@
   justify-content: center;
   font-weight: 700;
   border: 1px solid #333;
-  font-size: 18px;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .light {
@@ -37,4 +38,15 @@
 .info {
   margin-top: 12px;
   font-size: 14px;
+}
+
+.square {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border: 1px solid #333;
+  font-size: 28px; /* πιο μεγάλο για τα σκακιστικά σύμβολα */
 }
