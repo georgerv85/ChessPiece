@@ -1,35 +1,90 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const SIZE = 8;
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// Φτιάχνει έναν κενό πίνακα 8x8
+function createEmptyBoard() {
+  return Array.from({ length: SIZE }, () => Array(SIZE).fill(null));
 }
 
-export default App
+// Αρχικοποίηση σαν την ChessBoard.theseis() στη Java
+function initialBoard() {
+  const b = createEmptyBoard();
+
+  // Άσπροι πύργοι και αξιωματικοί
+  b[0][0] = "wR"; // white Rook
+  b[0][7] = "wR";
+  b[0][2] = "wB"; // white Bishop
+  b[0][5] = "wB";
+
+  // Μαύροι πύργοι και αξιωματικοί
+  b[7][0] = "bR"; // black Rook
+  b[7][7] = "bR";
+  b[7][2] = "bB"; // black Bishop
+  b[7][5] = "bB";
+
+  return b;
+}
+
+function App() {
+  // state της σκακιέρας
+  const [board] = useState(initialBoard());
+
+  // state για το επιλεγμένο τετράγωνο / κομμάτι
+  const [selectedCell, setSelectedCell] = useState(null);
+
+  // τι γίνεται όταν κάνω κλικ σε ένα τετράγωνο (r,c)
+  function handleSquareClick(r, c) {
+    const piece = board[r][c];
+
+    if (piece == null) {
+      // αν είναι άδειο τετράγωνο, καθάρισε την επιλογή
+      setSelectedCell(null);
+    } else {
+      // αν υπάρχει κομμάτι, αποθήκευσέ το ως επιλεγμένο
+      setSelectedCell({
+        row: r,
+        col: c,
+        piece: piece,
+      });
+    }
+  }
+
+  return (
+    <div className="app">
+      <h1>ChessPiece – Rook & Bishop Demo</h1>
+
+      <div className="board">
+        {board.map((row, r) =>
+          row.map((cell, c) => {
+            const isDark = (r + c) % 2 === 1; // εναλλαγή σκούρο/ανοιχτό τετράγωνο
+
+            return (
+              <div
+                key={`${r}-${c}`}
+                className={`square ${isDark ? "dark" : "light"}`}
+                onClick={() => handleSquareClick(r, c)}
+              >
+                {cell}
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      <div className="info">
+        {selectedCell ? (
+          <p>
+            Selected piece: <strong>{selectedCell.piece}</strong>{" "}
+            at (row {selectedCell.row}, col {selectedCell.col})
+          </p>
+        ) : (
+          <p>No piece selected.</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
